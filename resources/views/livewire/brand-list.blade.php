@@ -1,7 +1,7 @@
-<div class="container text-center">
-    <div class="row">
+<div class="container ">
+    <div class="grid grid-cols-3 ">
         @foreach ($brands as $brand)
-        <div class="col">
+        <div class="">
             <x-card.brand :brand="$brand" />
         </div>
         @endforeach

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->boolean('is_popular');
             $table->boolean('is_new');
             $table->boolean('is_action');
+            $table->string('description');
             $table->timestamps();
         });
     }

@@ -54,9 +54,7 @@ style="background-image: url({{ asset('storage/3.webp') }})">
             </div>
         </div>
 </x-container>
-<x-container>
 
-</x-container>
 </section>
 
 

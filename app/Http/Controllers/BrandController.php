@@ -10,8 +10,16 @@ class BrandController extends Controller
     public function index()
     {
         $brands = Brand::where('is_active', true)->get();
+        return view('page.main', [
+            'titlePage' => 'Категории',
+            'brands' => $brands,
+        ]);
+    }
+    public function show()
+    {
+        $brands = Brand::where('is_active', true)->get();
         return view('page.brand', [
-            'titlePage' => 'Бренды',
+            'titlePage' => 'Категории',
             'brands' => $brands,
         ]);
     }

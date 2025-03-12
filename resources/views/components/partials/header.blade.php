@@ -2,14 +2,15 @@
     <x-container>
         <div class="flex justify-between items-center">
             <div class="">
-                <a href=" " class="text-2xl">
-                    <i class='bx bxs-cube' style='color:#00bbff'  ></i>
+                <a href="https://flowbite.com/" class="flex items-center">
+                    <img src="{{ asset('storage/bpx.png') }}" class="h-8 me-3" alt="FlowBite Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap hover:text-gray-800">ТрусБакс</span>
                 </a>
             </div>
             <nav>
                 <ul class="flex text-gray-400 text-lg gap-8">
                     <li class="">
-                        <a href="{{ route('page.home') }}" class="hover:text-gray-800 hover:font-semibold">Главная</a>
+                        <a href="{{ route('page.brand') }}" class="hover:text-gray-800 hover:font-semibold">Главная</a>
                     </li>
                     <li class="">
                         <a href="{{ route ("brand.index")}}" class="hover:text-gray-800 hover:font-semibold">Бренды</a>
@@ -17,18 +18,13 @@
                     <li class="">
                         <a href="{{ route('product.index') }}" class="hover:text-gray-800 hover:font-bold">Все продукты</a>
                     </li>
-                    <li class="">
-                        <a href="" class="hover:text-gray-800 hover:font-bold">Популярное</a>
-                    </li>
-                    <li class="">
-                        <a href="" class="hover:text-gray-800 hover:font-bold">Fashion</a>
-                    </li>
+
                 </ul>
             </nav>
             <div class="flex gap-4">
                 @if (Route::has('login'))
                 @auth
-                    <a href="{{url('/dashboard')}}">Личный кабинет</a>
+                    <a href="{{route('logout')}}">Выйти</a>
                     @else
                     <a href="{{route('login')}}">Войти</a>
                     @if (Route::has('register'))

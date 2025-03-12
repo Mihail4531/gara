@@ -15,7 +15,6 @@
 
 <body class="">
     @include('components.partials.header')
-    @include("web.sections.intro")
     {{$slot}}
     @include('components.partials.footer')
 </body>

@@ -6,9 +6,13 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::controller(HomeController::class)->group(function() {
-    Route::get('/', 'index')->name('page.home');
+Route::prefix('/')->group(function() {
+    Route::get('/', [BrandController::class, 'index'])->name('page.brand');
+});
 
+Route::prefix('/brands')->as('brand.')->group(function() {
+    Route::get('/', [BrandController::class, 'show'])->name('index');
+    Route::get('/{id}/all', [ProductController::class, 'showOrBrand'])->name('showOrBrand');
 });
 
 Route::get('/dashboard', function () {
@@ -21,10 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('/brands')->as('brand.')->group(function() {
-    Route::get('/', [BrandController::class, 'index'])->name('index');
-    Route::get('/{id}/all', [ProductController::class, 'showOrBrand'])->name('showOrBrand');
-});
+
 
 Route::prefix('/products')->as('product.')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index');

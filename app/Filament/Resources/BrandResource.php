@@ -41,6 +41,16 @@ class BrandResource extends Resource
                         ->label('Название категории ')
                         ->maxLength(255)
                         ->required(),
+                    TextInput::make('description')
+                        ->label('Описание категории')
+                        ->maxLength(255)
+                        ->required(),
+                        FileUpload::make('image')
+                        ->image()
+                        ->imageEditor()
+                        ->directory('images/brand/')
+                        ->label('Изображение категории')
+                        ->columnSpanFull(),
                     Fieldset::make('Опции')->schema([
                         Toggle::make('is_active')
                             ->default(true)
@@ -49,7 +59,7 @@ class BrandResource extends Resource
                             ->default(false)
                             ->label('Популярный брэнд'),
                     ]),
-                ])->columns(['sm' => 2])->columnSpanFull(),
+                ])->columns(['sm' => 1])->columnSpanFull(),
             ]);
     }
 
@@ -60,6 +70,8 @@ class BrandResource extends Resource
                 TextColumn::make('name')
                     ->searchable()
                     ->label('Название бренда'),
+                    TextColumn::make('description')
+                    ->label('Описание продукта'),
                 ImageColumn::make('image')
                     ->label('Изображение')
                     ->size(50)

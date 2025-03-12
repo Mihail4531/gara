@@ -31,7 +31,10 @@ use Ramsey\Uuid\Type\Integer;
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
+    protected static ?string $modelLabel = "Продукты";
+    protected static ?string $pluralModelLabel = "Продукты";
 
+    protected static ?string $navigationLabel = 'Продукты';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -49,6 +52,10 @@ class ProductResource extends Resource
                             ->live(onBlur: true)
                             ->label('Материал из которого сделан продукт')
                             ->placeholder('Железо')
+                            ->required(),
+                            TextInput::make('description')
+                            ->label('Описание продукта')
+                            ->maxLength(255)
                             ->required(),
                         TextInput::make('color')
                             ->live(onBlur: true)
@@ -115,6 +122,10 @@ class ProductResource extends Resource
                     ->label('Бренд продукта')
                     ->sortable()
                     ->searchable(),
+                    TextColumn::make('description')
+                    ->label('Описание продукта'),
+
+
                 ImageColumn::make('image')
                     ->size(52)
                     ->circular()
